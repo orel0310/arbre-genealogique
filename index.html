@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#173f32">
+  <meta name="description" content="Arbre généalogique interactif Bonnefond – Reymond">
+  <title>Famille Bonnefond – Reymond</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-grain"></div>
+  <header class="site-header">
+    <a class="brand" href="#" data-view="lineage" aria-label="Accueil">
+      <span class="brand-mark">BR</span>
+      <span>
+        <strong>Famille Bonnefond – Reymond</strong>
+        <small>Histoire familiale interactive</small>
+      </span>
+    </a>
+    <nav class="main-nav" aria-label="Navigation principale">
+      <button class="nav-btn active" data-view="lineage">Lignée directe</button>
+      <button class="nav-btn" data-view="family">Vue familiale</button>
+      <button class="nav-btn" data-view="index">Toutes les personnes</button>
+      <button class="nav-btn" data-view="archives">Archives</button>
+    </nav>
+    <button id="openSearch" class="search-trigger" aria-label="Rechercher une personne">
+      <span>⌕</span><b>Rechercher</b>
+    </button>
+  </header>
+
+  <main>
+    <section id="lineageView" class="view active">
+      <div class="hero">
+        <div class="hero-copy">
+          <span class="eyebrow">Une histoire familiale documentée</span>
+          <h1>Une lignée, des familles,<br>des vies à découvrir.</h1>
+          <p>Les informations essentielles restent visibles. Un clic ouvre la biographie, les liens familiaux et les documents d’archives.</p>
+          <button class="primary-action" data-focus="P021">Explorer autour de Jean Bonnefond (1814)</button>
+        </div>
+        <div class="hero-ornament" aria-hidden="true">
+          <span class="ring r1"></span><span class="ring r2"></span><span class="ring r3"></span>
+          <span class="leaf l1">❧</span><span class="leaf l2">❧</span>
+        </div>
+      </div>
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">De Sainte-Colombe à Libreville</span>
+          <h2>La lignée directe</h2>
+        </div>
+        <p>Chaque génération présente le couple et son union. Les filiations sont matérialisées par la continuité verticale.</p>
+      </div>
+      <div id="lineageTrack" class="lineage-track"></div>
+    </section>
+
+    <section id="familyView" class="view">
+      <div class="family-toolbar">
+        <div>
+          <span class="eyebrow">Vue centrée</span>
+          <h1 id="familyTitle">Famille</h1>
+        </div>
+        <div class="family-nav-actions">
+          <button id="goParents" class="soft-btn">↑ Parents</button>
+          <button id="goHome" class="soft-btn">Lignée directe</button>
+        </div>
+      </div>
+      <div id="familyCanvas" class="family-canvas"></div>
+    </section>
+
+    <section id="archivesView" class="view">
+      <div class="index-hero archive-hero">
+        <span class="eyebrow">Documents transmis</span>
+        <h1>Archives familiales</h1>
+        <p>Actes d’état civil, recensements, photographies et presse. Cliquer pour agrandir.</p>
+        <input id="archiveSearch" type="search" placeholder="Rechercher un nom, une date ou un type de document…">
+      </div>
+      <div id="archiveGrid" class="archive-grid"></div>
+    </section>
+
+    <section id="indexView" class="view">
+      <div class="index-hero">
+        <span class="eyebrow">Répertoire familial</span>
+        <h1>Toutes les personnes</h1>
+        <p>Rechercher par nom, date, lieu, profession ou branche.</p>
+        <input id="indexSearch" type="search" placeholder="Ex. Bonnefond, Vienne, jardinier…">
+      </div>
+      <div id="indexGrid" class="index-grid"></div>
+    </section>
+  </main>
+
+  <aside id="profileDrawer" class="drawer" aria-hidden="true">
+    <button id="closeDrawer" class="drawer-close" aria-label="Fermer">×</button>
+    <div id="drawerContent"></div>
+  </aside>
+  <div id="drawerBackdrop" class="backdrop"></div>
+
+  <div id="searchPalette" class="palette" aria-hidden="true">
+    <div class="palette-box">
+      <div class="palette-head">
+        <input id="globalSearch" type="search" placeholder="Nom, lieu, métier, année…" autofocus>
+        <button id="closeSearch" aria-label="Fermer">×</button>
+      </div>
+      <div id="globalResults" class="palette-results"></div>
+    </div>
+  </div>
+
+  <div id="lightbox" class="lightbox" aria-hidden="true">
+    <button id="closeLightbox" class="lightbox-close" aria-label="Fermer">×</button>
+    <button id="prevImage" class="lightbox-nav prev" aria-label="Image précédente">‹</button>
+    <figure>
+      <img id="lightboxImage" alt="">
+      <figcaption id="lightboxCaption"></figcaption>
+    </figure>
+    <button id="nextImage" class="lightbox-nav next" aria-label="Image suivante">›</button>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
